@@ -2,12 +2,11 @@ package templemore.sbt.cucumber
 
 import sbt._
 import Keys._
-import Project.Initialize
 import templemore.sbt.util._
 
 /**
- * @author Chris Turner
- */
+  * @author Chris Turner
+  */
 object CucumberPlugin extends Plugin with Integration {
 
   private val projectVersion = "0.9.0-SNAPSHOT"
@@ -68,11 +67,11 @@ object CucumberPlugin extends Plugin with Integration {
 
   protected def cucumberOptionsTask =
     (cucumberFeaturesLocation, cucumberStepsBasePackage, cucumberExtraOptions,
-     cucumberBefore, cucumberAfter, cucumberStrict, cucumberMonochrome) map ((fl, bp, o, bf, af, st, mo) => Options(fl, bp, o, bf, af, st, mo))
+      cucumberBefore, cucumberAfter, cucumberStrict, cucumberMonochrome) map ((fl, bp, o, bf, af, st, mo) => Options(fl, bp, o, bf, af, st, mo))
 
   protected def cucumberOutputTask =
     (cucumberPrettyReport, cucumberHtmlReport, cucumberJunitReport, cucumberJsonReport,
-     cucumberPrettyReportFile, cucumberHtmlReportDir, cucumberJunitReportFile, cucumberJsonReportFile) map {
+      cucumberPrettyReportFile, cucumberHtmlReportDir, cucumberJunitReportFile, cucumberJsonReportFile) map {
       (pR, hR, juR, jsR, pRF, hRD, juRF, jsRF) => {
         Output(pR, hR, juR, jsR, pRF, hRD, juRF, jsRF)
       }
@@ -82,7 +81,10 @@ object CucumberPlugin extends Plugin with Integration {
   private def defaultAfter() = {}
 
   val cucumberSettings: Seq[Setting[_]] = Seq(
-    resolvers += "Templemore Repository" at "http://templemore.co.uk/repo",
+    // resolvers += "Templemore Repository" at "http://templemore.co.uk/repo",
+    // resolvers += Resolver.mavenLocal,
+    //resolvers += "mineset repo" at "http://thoth1.engr.sgi.com/maven/",
+    resolvers += "ESI Artifactory" at "http://esi-components.esi-group.com/artifactory/release/",
     libraryDependencies += "templemore" %% "sbt-cucumber-integration" % projectVersion % "test",
 
     cucumber <<= cucumberTask(false),
@@ -120,10 +122,10 @@ object CucumberPlugin extends Plugin with Integration {
 
   val cucumberSettingsWithTestPhaseIntegration = cucumberSettings ++ Seq(
     testFrameworks += new TestFramework("templemore.sbt.cucumber.CucumberFramework")
-  ) 
+  )
 
   val cucumberSettingsWithIntegrationTestPhaseIntegration = cucumberSettings ++ Seq(
     testFrameworks in IntegrationTest += new TestFramework("templemore.sbt.cucumber.CucumberFramework"),
     libraryDependencies += "templemore" %% "sbt-cucumber-integration" % projectVersion % "it"
-  ) 
+  )
 }

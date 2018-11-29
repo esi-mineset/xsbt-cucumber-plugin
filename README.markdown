@@ -7,8 +7,8 @@ An [sbt 0.13.0](https://github.com/harrah/xsbt/wiki) plugin for running [Cucumbe
 Provides the ability to run Cucumber-jvm within the SBT environment. Originally based on the [cuke4duke-sbt-plugin](https://github.com/rubbish/cuke4duke-sbt-plugin) by rubbish and my original implementation for SBT 0.7.x. Specifics for this release:
 
 * Works with xsbt 0.13.0
-* Works with cucumber-jvm (version 1.1.4 for both Scala 2.9.3 and 2.10)
-* Allows projects compiled and running against Scala 2.9.3 and 2.10 
+* Works with cucumber-jvm (version 1.1.4 for both Scala 2.9.3, 2.10, 2.11)
+* Allows projects compiled and running against Scala 2.9.3 and 2.10, 2.11 
 
 ## Usage - Standalone Task ##
 Install the plugin (see later). By default features files go in the 'src/test/resources' directory. Step definitions go in 'src/test/scala'. Finally from the sbt console call the task:
@@ -214,8 +214,8 @@ Requests for features can be posted to the issues list or emailed to the author.
 
 ### 0.8.0 ###
 
-Upgrade to support SBT 0.13.0 and Scala 2.10 as the default versions
-Fix for issues #26, #27 and #31. Upgrade support to Cucumber JVM 1.1.4 (for both Scala 2.9 and 2.10)
+Upgrade to support SBT 0.13.0 and Scala 2.11 as the default versions
+Fix for issues #26, #27 and #31. Upgrade support to Cucumber JVM 1.1.4 (for both Scala 2.9, 2.10, and 2.11)
 Improvement on path for issues #20 and #21. Added support for a new task: cucumber-dry-run
 Improvement on path for issues #20 and #21. Added cucumberStatic and cucumberMonochrome settings
 Fix for issue #29. Readme has been updated
